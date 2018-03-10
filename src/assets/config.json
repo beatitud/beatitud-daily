@@ -1,0 +1,7 @@
+{
+  "WS_CONFIG": {
+    "WS_PUBLICATION_URL": "https://publication.evangelizo.ws/",
+    "WS_USER_URL": "https://user.evangelizo.ws/",
+    "WS_PARAM_URL": "https://conf.evangelizo.ws/"
+  }
+}

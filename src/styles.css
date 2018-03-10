@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext");
+
+p, div {
+  font-family: Raleway;
+}
+
+h1, h2 {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,8 @@
+<div>
+  <div *ngFor="let reading of readings">
+    <h2>{{reading.book.full_title}} {{reading.reference_displayed}}</h2>
+    <div *ngFor="let verse of getVerseNbAndTextList(reading.text)">
+      <b style="color: #5499e7; font-size:0.8em;">{{verse.number}}</b>
+      <span>{{verse.text}}</span>
+    <p>
+</div>
