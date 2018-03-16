@@ -15,9 +15,8 @@ import { AppComponent } from './app.component';
 import { ReadingsComponent } from './readings/readings.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
-import {ReadingsService} from "./readings.service";
-
-import {ngHttpProgress } from "bower_components/angular-http-progress"
+import {LanguagesService, ReadingsService, SaintsService} from "./publication.service";
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 @NgModule({
   imports: [
@@ -27,14 +26,14 @@ import {ngHttpProgress } from "bower_components/angular-http-progress"
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    ngHttpProgress,
+    LoadingBarHttpClientModule,
   ],
   declarations: [
     AppComponent,
     ReadingsComponent,
     SideNavComponent
   ],
-  providers: [ReadingsService],
-  bootstrap: [AppComponent]
+  providers: [LanguagesService, ReadingsService, SaintsService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,60 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, style, transition, animate, keyframes, query, stagger } from "@angular/animations";
-
-import {ReadingsService} from "../readings.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { formatDate, getVerseNbAndTextList } from '../utils'
+import {LanguagesService, ReadingsService} from "../publication.service";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
   styleUrls: ['./readings.component.css'],
   providers: [ReadingsService],
-  animations: [
-    trigger("readings", [
-      transition("* => *", [
-        query(':enter', style({opacity: 0}), {optional: true}),
-        query(':enter', stagger('300ms', [
-          animate('.6s ease-in', keyframes([
-            style({opacity: 0, transform: 'translateY(-75%)', offset: 0}),
-            style({opacity: 0.5, transform: 'translateY(35px)', offset: .3}),
-            style({opacity: 1, transform: 'translateY(0)', offset: 1})
-          ]))
-        ]), {optional: true})
-      ])
-    ])
-  ]
 })
 export class ReadingsComponent implements OnInit {
-  readings: any = [];
+  @Input() languages: languages;
+  readings: any;
+  version: string;
+  date: string;
+  liturgicEvent: any;
+  getVerseNbAndTextList = getVerseNbAndTextList;
 
-
-  constructor(private _readings: ReadingsService) {
-
+  constructor(
+    private _readings: ReadingsService,
+    private _languages: LanguagesService,) {
   }
 
-  getVerseNumber(verse): void {
-    return verse
-  }
+  loadContent(version, date): void {
+    const main = this
+    this._readings.getReadings(version, date)
+      .subscribe(function(json){
+        main.readings = json.data;
+      });
 
-  getVerseNbAndTextList(text): void {
-    let verseIdList = text.match(/\[\[((?:.|\n)*?)]]/g) //(/\[+\[+[a-zA-Z0-9, ]+]+]/g) // like : [ "[[Ac 21,2]]", ...]
-    let verseNbList = verseIdList.map(function (element) {return element.match(/[0-9- ]+]/)[0].slice(0,-1)})
-    let verseTextList = text.match(/]]((?:.|\n)*?)\[\[/g).map(function(element) {return element.slice(2,-2)})
-    let verseList = verseTextList.map( function(element, index) {
-      return {
-        number: verseNbList[index],
-        text: verseTextList[index]
-      }
-    })
-    return verseList
+    this._readings.getLiturgicEvent(version, date)
+      .subscribe(function(json){
+        main.liturgicEvent = json.data;
+      })
   }
 
   ngOnInit() {
     const main = this
-    this._readings.getReadings("TRF", "2018-04-04")
+    this.date = formatDate(new Date())
+
+    this._languages.getLanguages()
       .subscribe(function(json){
-          main.readings = json.data;
-          console.log(main.readings)
+        main.languages = json.data;
+        main.version = json.data[4].code
+        main.loadContent(main.version, main.date)
       })
+
   }
 
 }

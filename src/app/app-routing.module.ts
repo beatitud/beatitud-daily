@@ -7,12 +7,12 @@ const appRoutes: Routes = [
   /*
   * Paths
   * */
-  { path: 'test', component: ReadingsComponent, },
   { path: 'readings', component: ReadingsComponent, },
+  { path: 'saints', component: ReadingsComponent, },
   /*
   * Redirection
   * */
-  { path: '', redirectTo: 'test', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

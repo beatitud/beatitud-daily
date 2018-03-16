@@ -1,8 +1,22 @@
-<div>
-  <div *ngFor="let reading of readings">
-    <h2>{{reading.book.full_title}} {{reading.reference_displayed}}</h2>
-    <div *ngFor="let verse of getVerseNbAndTextList(reading.text)">
-      <b style="color: #5499e7; font-size:0.8em;">{{verse.number}}</b>
-      <span>{{verse.text}}</span>
-    <p>
+<div *ngIf="version">
+  <mat-form-field>
+    <mat-select [(value)]="version">
+      <mat-option *ngFor="let language of languages" [value]="language" (click)="loadContent(language.code,date)">{{language.code}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div *ngIf="liturgicEvent && readings && languages">
+  <h1 class="liturgic-title">{{liturgicEvent.title}}</h1>
+  <div class="reading-block" *ngFor="let reading of readings">
+    <div class="reading-label">{{reading.type}}</div>
+    <mat-card class="reading-card">
+      <div class="reading-title">{{reading.book.full_title}} {{reading.reference_displayed}}</div>
+      <div class="reading-content">
+        <p class="reading-verse" *ngFor="let verse of getVerseNbAndTextList(reading.text)">
+          <b class="verse-number" style="color: #5499e7; font-size:0.8em;">{{verse.number}}</b>
+          <span class="verse-text">{{verse.text}}</span>
+        </p>
+      </div>
+    </mat-card>
 </div>
