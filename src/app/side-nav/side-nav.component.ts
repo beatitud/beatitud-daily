@@ -9,6 +9,10 @@ export class SideNavComponent implements OnInit {
 
   constructor() { }
 
+  isActive(link): void {
+
+  }
+
   ngOnInit() {
   }
   shouldRun = true

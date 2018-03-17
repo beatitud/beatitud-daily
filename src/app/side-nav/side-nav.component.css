@@ -1,7 +1,33 @@
-.example-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.main-side-nav li {
+  font-size: 1.1em;
+  padding: 15px;
+}
+
+.main-side-nav .nav-item-active {
+  font-weight: bold;
+  color: #4cd5a0;
+}
+
+.main-side-nav .nav-item-inactive {
+  color: #979fa6;
+}
+
+.main-side-nav li:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+/*
+* Get rid of default styles
+* */
+
+.main-side-nav ul {
+  padding-left: 0px !important;
+}
+
+.main-side-nav li {
+  color: rgba(1,1,1,0) !important;
+}
+
+.main-side-nav a {
+  text-decoration: none !important;
 }

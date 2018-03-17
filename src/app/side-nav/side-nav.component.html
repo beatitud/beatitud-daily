@@ -1,8 +1,16 @@
-<mat-sidenav mode="side" class="sidenav" opened>
-  <nav>
-    <ul>
-      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-      <li><a routerLink="/test" routerLinkActive="active">Heroes</a></li>
-    </ul>
-  </nav>
-</mat-sidenav>
+<nav class="main-side-nav">
+  <ul>
+    <li>
+      <a routerLink="/readings" routerLinkActive #routerLinkReadings="routerLinkActive"
+         class="{{ routerLinkReadings.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+        Corpus
+      </a>
+    </li>
+    <li>
+      <a routerLink="/saints" routerLinkActive #routerLinkSaints="routerLinkActive"
+         class="{{routerLinkSaints.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+        Saints
+      </a>
+    </li>
+  </ul>
+</nav>

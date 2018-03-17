@@ -1,12 +1,21 @@
-<div *ngIf="version">
+<div *ngIf="selectedVersion && selectedLanguage">
   <mat-form-field>
-    <mat-select [(value)]="version">
-      <mat-option *ngFor="let language of languages" [value]="language" (click)="loadContent(language.code,date)">{{language.code}}</mat-option>
+    <mat-select [(ngModel)]="selectedLanguage.name">
+      <mat-option *ngFor="let language of languages" [value]="language.name" (click)="onChangeLanguage(language)">
+        {{language.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedVersion.name">
+      <mat-option *ngFor="let version of selectedLanguage.versions" [value]="version.name" (click)="loadContent(selectedVersion.code,date)">
+        {{version.name}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 
-<div *ngIf="liturgicEvent && readings && languages">
+<div class="readings-component" *ngIf="liturgicEvent && readings && languages">
   <h1 class="liturgic-title">{{liturgicEvent.title}}</h1>
   <div class="reading-block" *ngFor="let reading of readings">
     <div class="reading-label">{{reading.type}}</div>

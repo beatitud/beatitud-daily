@@ -11,9 +11,11 @@ import 'rxjs/add/operator/switchMap';
   providers: [ReadingsService],
 })
 export class ReadingsComponent implements OnInit {
-  @Input() languages: languages;
+  languages: any;
+  selectedLanguage: any;
+  versions: any;
+  selectedVersion: any;
   readings: any;
-  version: string;
   date: string;
   liturgicEvent: any;
   getVerseNbAndTextList = getVerseNbAndTextList;
@@ -23,30 +25,35 @@ export class ReadingsComponent implements OnInit {
     private _languages: LanguagesService,) {
   }
 
+  ngOnInit() {
+    this.date = formatDate(new Date())
+    var _this = this;
+
+    this._languages.getLanguages()
+      .subscribe(function(json){
+        _this.languages = json.data;
+        _this.selectedLanguage = _this.languages[0];
+        _this.onChangeLanguage(_this.selectedLanguage);
+      })
+  }
+
+  onChangeLanguage(language): void {
+    this.selectedLanguage = language
+    this.selectedVersion = language.versions[0];
+    this.loadContent(this.selectedVersion.code, this.date)
+  }
+
   loadContent(version, date): void {
-    const main = this
+    var _this = this;
     this._readings.getReadings(version, date)
       .subscribe(function(json){
-        main.readings = json.data;
+        _this.readings = json.data;
       });
 
     this._readings.getLiturgicEvent(version, date)
       .subscribe(function(json){
-        main.liturgicEvent = json.data;
+        _this.liturgicEvent = json.data;
       })
-  }
-
-  ngOnInit() {
-    const main = this
-    this.date = formatDate(new Date())
-
-    this._languages.getLanguages()
-      .subscribe(function(json){
-        main.languages = json.data;
-        main.version = json.data[4].code
-        main.loadContent(main.version, main.date)
-      })
-
   }
 
 }

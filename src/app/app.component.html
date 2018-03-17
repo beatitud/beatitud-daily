@@ -3,12 +3,7 @@
   <mat-sidenav-container class="container" *ngIf="shouldRun">
     <mat-toolbar class="header">Header</mat-toolbar>
     <mat-sidenav mode="side" class="sidenav" opened>
-      <nav>
-        <ul>
-          <li><a routerLink="/readings" routerLinkActive="active">Corpus</a></li>
-          <li><a routerLink="/saints" routerLinkActive="active">Saints</a></li>
-        </ul>
-      </nav>
+      <app-side-nav [routerLinkActive]></app-side-nav>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>

@@ -2,21 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { FormsModule } from "@angular/forms";
 
 // Import all routes
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { RouterLinkActive } from '@angular/router';
 
 // Import Material
 import { MaterialModule } from './material.module';
 
-// Import all components
+// Import main app components
 import { AppComponent } from './app.component';
-import { ReadingsComponent } from './readings/readings.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
-import {LanguagesService, ReadingsService, SaintsService} from "./publication.service";
-import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+// Import all services
+import { LanguagesService, ReadingsService, SaintsService } from "./publication.service";
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
   ],
   declarations: [
     AppComponent,
-    ReadingsComponent,
+    routingComponents,
     SideNavComponent
   ],
   providers: [LanguagesService, ReadingsService, SaintsService],
