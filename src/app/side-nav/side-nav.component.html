@@ -1,16 +1,12 @@
-<nav class="main-side-nav">
-  <ul>
-    <li>
-      <a routerLink="/readings" routerLinkActive #routerLinkReadings="routerLinkActive"
-         class="{{ routerLinkReadings.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
-        Corpus
-      </a>
-    </li>
-    <li>
-      <a routerLink="/saints" routerLinkActive #routerLinkSaints="routerLinkActive"
-         class="{{routerLinkSaints.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
-        Saints
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="main-side-nav">
+  <a routerLink="/readings" routerLinkActive #routerLinkReadings="routerLinkActive"
+     class="{{ routerLinkReadings.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">book</i>
+    <span>Corpus</span>
+  </a>
+  <a routerLink="/saints" routerLinkActive #routerLinkSaints="routerLinkActive"
+     class="{{routerLinkSaints.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">people</i>
+    <span>Saints</span>
+  </a>
+</div>

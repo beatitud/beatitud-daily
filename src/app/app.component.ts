@@ -17,7 +17,7 @@ export class AppComponent {
 
     this._languages.getLanguages()
       .subscribe(function(json){
-        main.languages = json.data;
+        main.languages = json["data"];
         console.log(main.languages)
       })
   }

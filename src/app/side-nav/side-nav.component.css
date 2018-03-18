@@ -1,6 +1,30 @@
-.main-side-nav li {
+.main-side-nav {
   font-size: 1.1em;
-  padding: 15px;
+  padding: 0px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.main-side-nav a {
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  /*background-color: rgba(9, 30, 66, 0.25);*/
+  color: rgb(222, 235, 255);
+  fill: rgba(9, 30, 66, 0.25);
+  height: 40px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.main-side-nav a:hover {
+  background-color: rgba(0,0,0,0.05);
 }
 
 .main-side-nav .nav-item-active {
@@ -12,22 +36,4 @@
   color: #979fa6;
 }
 
-.main-side-nav li:hover {
-  background-color: rgba(0,0,0,0.05);
-}
 
-/*
-* Get rid of default styles
-* */
-
-.main-side-nav ul {
-  padding-left: 0px !important;
-}
-
-.main-side-nav li {
-  color: rgba(1,1,1,0) !important;
-}
-
-.main-side-nav a {
-  text-decoration: none !important;
-}

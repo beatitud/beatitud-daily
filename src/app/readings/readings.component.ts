@@ -31,7 +31,7 @@ export class ReadingsComponent implements OnInit {
 
     this._languages.getLanguages()
       .subscribe(function(json){
-        _this.languages = json.data;
+        _this.languages = json["data"];
         _this.selectedLanguage = _this.languages[0];
         _this.onChangeLanguage(_this.selectedLanguage);
       })
@@ -47,12 +47,12 @@ export class ReadingsComponent implements OnInit {
     var _this = this;
     this._readings.getReadings(version, date)
       .subscribe(function(json){
-        _this.readings = json.data;
+        _this.readings = json["data"];
       });
 
     this._readings.getLiturgicEvent(version, date)
       .subscribe(function(json){
-        _this.liturgicEvent = json.data;
+        _this.liturgicEvent = json["data"];
       })
   }
 

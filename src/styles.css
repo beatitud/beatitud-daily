@@ -9,3 +9,11 @@ p, div, span {
 h1, h2 {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.inline-icon {
+  margin-right: 16px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+}
