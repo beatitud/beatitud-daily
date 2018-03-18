@@ -9,4 +9,14 @@
     <i class="material-icons inline-icon">people</i>
     <span>Saints</span>
   </a>
+  <a routerLink="/explorer" routerLinkActive #routerLinkExplorer="routerLinkActive"
+     class="{{routerLinkExplorer.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">explore</i>
+    <span>Explorer</span>
+  </a>
+  <a routerLink="/squeeze" routerLinkActive #routerLinkSqueeze="routerLinkActive"
+     class="{{routerLinkSqueeze.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">bubble_chart</i>
+    <span>Squeezes</span>
+  </a>
 </div>

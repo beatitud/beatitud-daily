@@ -1,3 +1,15 @@
+.settings-pickers {
+}
+
+.version-picker, .language-picker {
+  margin-left: 10px;
+}
+
+.readings-component .date {
+  margin-top: 30px;
+  color: #bac2cd;
+}
+
 .readings-component .liturgic-title {
   /*font-size: 2.2em;*/
   color: #495768;

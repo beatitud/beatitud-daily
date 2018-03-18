@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ReadingsComponent } from './readings/readings.component';
 import { SaintsComponent } from "./saints/saints.component";
+import { ExplorerComponent} from "./explorer/explorer.component";
+import { SqueezeComponent } from "./squeeze/squeeze.component";
 
 const appRoutes: Routes = [
   /*
@@ -10,6 +12,8 @@ const appRoutes: Routes = [
   * */
   { path: 'readings', component: ReadingsComponent, },
   { path: 'saints', component: SaintsComponent, },
+  { path: 'explorer', component: ExplorerComponent, },
+  { path: 'squeeze', component: SqueezeComponent, },
   /*
   * Redirection
   * */
@@ -30,4 +34,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ReadingsComponent, SaintsComponent]
+export const routingComponents = [ReadingsComponent, SaintsComponent, ExplorerComponent, SqueezeComponent]

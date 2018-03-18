@@ -1,12 +1,12 @@
-<div *ngIf="selectedVersion && selectedLanguage">
-  <mat-form-field>
+<div *ngIf="selectedVersion && selectedLanguage" class="settings-pickers" align="right">
+  <mat-form-field class="language-picker">
     <mat-select [(ngModel)]="selectedLanguage.name">
       <mat-option *ngFor="let language of languages" [value]="language.name" (click)="onChangeLanguage(language)">
         {{language.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="version-picker">
     <mat-select [(ngModel)]="selectedVersion.name">
       <mat-option *ngFor="let version of selectedLanguage.versions" [value]="version.name" (click)="loadContent(selectedVersion.code,date)">
         {{version.name}}
@@ -16,6 +16,7 @@
 </div>
 
 <div class="readings-component" *ngIf="liturgicEvent && readings && languages">
+  <span class="date">{{date | date: 'medium'}}</span>
   <h1 class="liturgic-title">{{liturgicEvent.title}}</h1>
   <div class="reading-block" *ngFor="let reading of readings">
     <div class="reading-label">{{reading.type}}</div>
