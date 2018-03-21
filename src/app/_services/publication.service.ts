@@ -12,7 +12,7 @@ export class LanguagesService {
 
 
   findUserVersion() {
-    let browserLanguage = navigator.language || navigator.userLanguage;
+    let browserLanguage = navigator.language //|| navigator.userLanguage;
     let matchedVersion = languageMatchVersion[browserLanguage].LINKED_VERSION;
     console.log("browser language :", browserLanguage)
     console.log("matching version :", matchedVersion)
