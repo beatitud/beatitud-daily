@@ -1,14 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+
+import { AppStore } from '../app.store';
+
+// Import models
+import {Settings} from "../_models/settings";
 
 import * as config from "assets/config.json"
 const configUrl = (<any>config).WS_CONFIG
 const languageMatchVersion = (<any>config).LANGUAGE_MATCH_VERSION
 
 @Injectable()
-export class LanguagesService {
+export class LanguagesService extends Settings {
 
-  constructor(private http: HttpClient) { }
+  // Redux based variables
+  settings: Observable<Settings>;
+
+  constructor(
+    private http: HttpClient,
+    private store: Store<AppStore>,
+  ) {
+    super();
+    this.settings = store.select( store => store.settings);
+  }
 
 
   findUserVersion() {

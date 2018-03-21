@@ -5,6 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { FormsModule } from "@angular/forms";
 
+// Import NgRedux for Angular
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+// Import all reducers
+import {campaigns} from "./_reducers/index";
+
 // Import all routes
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { RouterLinkActive } from '@angular/router';
@@ -17,7 +23,7 @@ import { AppComponent } from './app.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
 // Import all services
-import { LanguagesService, ReadingsService, SaintsService } from "./publication.service";
+import { LanguagesService, ReadingsService, SaintsService } from "./_services/publication.service";
 
 @NgModule({
   imports: [
@@ -28,6 +34,11 @@ import { LanguagesService, ReadingsService, SaintsService } from "./publication.
     BrowserAnimationsModule,
     FormsModule,
     LoadingBarHttpClientModule,
+    StoreModule.forRoot({
+      //place for future reducers
+      campaigns
+    }),
+    StoreDevtoolsModule.instrument()
   ],
   declarations: [
     AppComponent,

@@ -1,14 +1,12 @@
 <div>
   <ngx-loading-bar color="#449bff" [includeSpinner]="false" height="3px"></ngx-loading-bar>
   <mat-sidenav-container class="container" *ngIf="shouldRun">
-    <mat-toolbar class="header">Header</mat-toolbar>
     <mat-sidenav mode="side" class="sidenav" opened>
       <app-side-nav [routerLinkActive]></app-side-nav>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
-    <mat-toolbar class="footer">Footer</mat-toolbar>
   </mat-sidenav-container>
 </div>
 

@@ -1,8 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { formatDate, getVerseNbAndTextList } from '../utils'
-import {LanguagesService, ReadingsService} from "../publication.service";
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+import {LanguagesService, ReadingsService} from "../_services/publication.service";
+import {Settings} from "../_models/settings";
+
+class Reading {
+
+}
 
 @Component({
   selector: 'app-readings',
@@ -11,18 +15,19 @@ import 'rxjs/add/operator/switchMap';
   providers: [ReadingsService],
 })
 export class ReadingsComponent implements OnInit {
-  languages: any;
-  selectedLanguage: any;
-  versions: any;
-  selectedVersion: any;
   readings: any;
   date: string;
   liturgicEvent: any;
   getVerseNbAndTextList = getVerseNbAndTextList;
+  selectedText: string;
+
+  // Redux based variables
+  settings: Observable<Settings>;
 
   constructor(
     private _readings: ReadingsService,
     private _languages: LanguagesService,) {
+    // this.settings =
   }
 
   ngOnInit() {
@@ -31,16 +36,16 @@ export class ReadingsComponent implements OnInit {
 
     this._languages.getLanguages()
       .subscribe(function(json){
-        _this.languages = json["data"];
-        _this.selectedLanguage = _this.languages[0];
-        _this.onChangeLanguage(_this.selectedLanguage);
+        _this.settings.languages = json["data"];
+        _this.settings.selectedLanguage = _this.settings.languages[0];
+        _this.onChangeLanguage(_this.settings.selectedLanguage);
       })
   }
 
   onChangeLanguage(language): void {
-    this.selectedLanguage = language
-    this.selectedVersion = language.versions[0];
-    this.loadContent(this.selectedVersion.code, this.date)
+    this.settings.selectedLanguage = language
+    this.settings.selectedVersion = language.versions[0];
+    this.loadContent(this.settings.selectedVersion.code, this.date)
   }
 
   loadContent(version, date): void {
@@ -55,5 +60,15 @@ export class ReadingsComponent implements OnInit {
         _this.liturgicEvent = json["data"];
       })
   }
+
+  getSelectedText(): void {
+    if (window.getSelection) {
+      this.selectedText = window.getSelection().toString();
+    }
+    // else if (document.selection && document.selection.type != "Control") {
+    //   text = document.selection.createRange().text;
+    // }
+    console.log(this.selectedText);
+  };
 
 }
