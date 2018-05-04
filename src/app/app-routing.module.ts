@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ReadingsComponent } from './readings/readings.component';
-import { SaintsComponent } from "./saints/saints.component";
-import { ExplorerComponent} from "./explorer/explorer.component";
-import { SqueezeComponent } from "./squeeze/squeeze.component";
+import { ReadingsComponent } from './modules/readings/readings.component';
+import { SaintsComponent } from "./modules/saints/saints.component";
+import { MassScheduleComponent} from "./modules/mass-schedule/mass-schedule.component";
+import { PrayersComponent } from "./modules/prayers/prayers.component";
 
 const appRoutes: Routes = [
   /*
@@ -12,8 +12,8 @@ const appRoutes: Routes = [
   * */
   { path: 'readings', component: ReadingsComponent, },
   { path: 'saints', component: SaintsComponent, },
-  { path: 'explorer', component: ExplorerComponent, },
-  { path: 'squeeze', component: SqueezeComponent, },
+  { path: 'mass-schedule', component: MassScheduleComponent, },
+  { path: 'prayers', component: PrayersComponent, },
   /*
   * Redirection
   * */
@@ -34,4 +34,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ReadingsComponent, SaintsComponent, ExplorerComponent, SqueezeComponent]
+export const routingComponents = [ReadingsComponent, SaintsComponent, MassScheduleComponent, PrayersComponent]

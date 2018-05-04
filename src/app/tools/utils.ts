@@ -1,4 +1,4 @@
-export function formatDate(date) {
+export function dateEvangelizoFormatter(date) {
   var d = new Date(date),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),

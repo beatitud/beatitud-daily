@@ -1,0 +1,28 @@
+<div class="main-side-nav">
+  <img class="logo" src="../../../assets/logo.png" width="100"/>
+  <a routerLink="/readings" routerLinkActive #routerLinkReadings="routerLinkActive"
+     class="{{ routerLinkReadings.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">book</i>
+    <span>Readings</span>
+  </a>
+  <a routerLink="/saints" routerLinkActive #routerLinkSaints="routerLinkActive"
+     class="{{routerLinkSaints.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="material-icons inline-icon">people</i>
+    <span>Saints</span>
+  </a>
+  <a routerLink="/mass-schedule" routerLinkActive #routerLinkMassSchedule="routerLinkActive"
+     class="{{routerLinkMassSchedule.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="fas fa-clock inline-icon"></i>
+    <span>Mass Schedule</span>
+  </a>
+  <a routerLink="/prayers" routerLinkActive #routerLinkPrayers="routerLinkActive"
+     class="{{routerLinkPrayers.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="fas fa-hands inline-icon"></i>
+    <span>Prayers</span>
+  </a>
+  <a routerLink="/squeeze" routerLinkActive #routerLinkSqueeze="routerLinkActive"
+     class="{{routerLinkSqueeze.isActive ? 'nav-item-active' : 'nav-item-inactive'}}">
+    <i class="fas fa-calendar-alt inline-icon"></i>
+    <span>Liturgical Calendar</span>
+  </a>
+</div>

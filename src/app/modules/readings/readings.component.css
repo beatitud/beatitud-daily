@@ -1,0 +1,88 @@
+
+.readings-page-content {
+  margin-top: 50px;
+  margin-right: 20vh;
+  margin-left: 20vh;
+}
+
+.settings-pickers {
+}
+
+.version-picker, .language-picker {
+  margin-left: 10px;
+}
+
+.readings-component .date {
+  margin-top: 30px;
+  color: #bac2cd;
+}
+
+.readings-component .liturgic-title {
+  /*font-size: 2.2em;*/
+  color: #495768;
+}
+
+.readings-component .reading-block {
+  margin-top: 50px;
+}
+
+.readings-component .reading-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #495768;
+}
+
+.readings-component .reading-card {
+  margin-top: 20px;
+  /*border-radius: 8px;*/
+  border: solid 1px #eee;
+  box-shadow: none !important;
+}
+
+.readings-component .reading-title {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.readings-component .reading-content {
+  margin-top: 15px;
+}
+
+.readings-component .reading-verse {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  margin-bottom: 0px;
+  -webkit-margin-before: 0em;
+}
+
+.readings-component .reading-verse .verse-number {
+  color: #5499e7;
+  font-size:0.8em;
+}
+
+.readings-component .reading-verse .verse-text:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background-color: white;
+  padding: 10px;
+}
+
+.footer-item {
+  height: 100%;
+}
+
+.footer .pin-button {
+  vertical-align: middle;
+  right: 20px;
+  border-radius: 70px;
+}
