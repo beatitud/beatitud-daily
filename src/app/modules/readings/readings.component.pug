@@ -1,48 +1,27 @@
-<div class="readings-page-content" fxFlex="60" fxLayout="column" fxLayoutAlign="start center">
-  <div *ngIf="selectedLanguage" class="settings-pickers" align="right">
-    <mat-form-field class="language-picker">
-      <mat-select [(ngModel)]="selectedLanguage.name">
-        <mat-option *ngFor="let language of languages" [value]="language.name" (click)="onChangeLanguage(language)">
-          {{language.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="version-picker">
-      <mat-select [(ngModel)]="selectedVersion.name">
-        <mat-option *ngFor="let version of selectedLanguage.versions" [value]="version.name" (click)="loadContent(selectedVersion.code,date)">
-          {{version.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-
-
-  <div class="readings-component" *ngIf="liturgicEvent && readings"
-       (mouseup)="getSelectedText()">
-    <span class="date">{{date | date: 'medium'}}</span>
-    <h1 class="liturgic-title">{{liturgicEvent.title}}</h1>
-    <div class="reading-block" *ngFor="let reading of readings">
-      <div class="reading-label">{{reading.type}}</div>
-      <mat-card class="reading-card">
-        <div class="reading-title no-select">{{reading.book.full_title}} {{reading.reference_displayed}}</div>
-        <div class="reading-content">
-          <p class="reading-verse" *ngFor="let verse of getVerseNbAndTextList(reading.text)">
-            <b class="verse-number no-select">{{verse.number}}</b>
-            <span class="verse-text">
-              {{verse.text}}
-            </span>
-          </p>
-        </div>
-      </mat-card>
-    </div>
-</div>
-
-<div class="footer" *ngIf="selectedText">
-  <div align="right" class="footer-item">
-    <button mat-raised-button color="primary" class="pin-button">
-      <i class="material-icons">pin_drop</i>
-      <span>Épingler</span>
-    </button>
-  </div>
-</div>
+.readings-page-content(fxflex="60" fxlayout="column" fxlayoutalign="start center")
+  .settings-pickers(*ngIf="selectedLanguage" align="right")
+    mat-form-field.language-picker
+      mat-select([(ngModel)]="selectedLanguage.name")
+        mat-option(*ngFor="let language of languages" value="{{language.name}}" click="onChangeLanguage(language)")
+          | {{language.name}}
+    mat-form-field.version-picker
+      mat-select([(ngModel)]="selectedVersion.name")
+        mat-option(*ngFor="let version of selectedLanguage.versions" value="{{version.name}}" click="loadContent(selectedVersion.code,date)")
+          | {{version.name}}
+  .readings-component(*ngIf="liturgicEvent && readings" mouseup="getSelectedText()")
+    span.date {{date | date: "medium"}}
+    h1.liturgic-title {{liturgicEvent.title}}
+    .reading-block(*ngFor="let reading of readings")
+      .reading-label {{reading.type}}
+      mat-card.reading-card
+        .reading-title.no-select {{reading.book.full_title}} {{reading.reference_displayed}}
+        .reading-content
+          p.reading-verse(*ngFor="let verse of getVerseNbAndTextList(reading.text)")
+            b.verse-number.no-select {{verse.number}}
+            span.verse-text
+              | {{verse.text}}
+  .footer(*ngIf="selectedText")
+    .footer-item(align="right")
+      button.pin-button(mat-raised-button="" color="primary")
+        i.material-icons pin_drop
+        span Épingler

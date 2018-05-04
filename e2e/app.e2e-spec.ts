@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('squeeze-webapp App', () => {
+describe('living-frontend App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -1,3 +1,5 @@
-import {campaigns} from "./myreducer.reducer";
+import {settings} from "./settings.reducer";
 
-export {campaigns}
+export const reducers = {
+  settings: settings,
+};

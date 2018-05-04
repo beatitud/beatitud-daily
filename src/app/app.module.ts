@@ -4,12 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { FormsModule } from "@angular/forms";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Import NgRedux for Angular
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 // Import all reducers
-import {campaigns} from "./_reducers/index";
+import { reducers } from './_reducers/index';
 
 // Import all routes
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -20,10 +21,10 @@ import { MaterialModule } from './material.module';
 
 // Import main app components
 import { AppComponent } from './app.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 // Import all services
-import { LanguagesService, ReadingsService, SaintsService } from "./_services/publication.service";
+import { LanguagesService, ReadingsService, SaintsService } from "./services/publication.service";
 
 @NgModule({
   imports: [
@@ -33,11 +34,9 @@ import { LanguagesService, ReadingsService, SaintsService } from "./_services/pu
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
+    FlexLayoutModule,
     LoadingBarHttpClientModule,
-    StoreModule.forRoot({
-      //place for future reducers
-      campaigns
-    }),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument()
   ],
   declarations: [

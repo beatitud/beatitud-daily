@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // import { Store } from '@ngrx/store';
-import { formatDate, getVerseNbAndTextList } from '../../utils'
-import { ReadingsService, LanguagesService } from "../../_services/publication.service";
+import { dateEvangelizoFormatter, getVerseNbAndTextList } from '../../tools/utils'
+import { ReadingsService, LanguagesService } from "../../services/publication.service";
 // import {Settings} from "../../_models/settings";
 
 // import * as fromRoot from '../../_reducers';
@@ -41,7 +41,7 @@ export class ReadingsComponent implements OnInit {
 
   ngOnInit() {
     // this.store.dispatch(new InitSettingsAction())
-    this.date = formatDate(new Date())
+    this.date = dateEvangelizoFormatter(new Date())
     var _this = this;
 
     this._languages.getLanguages()

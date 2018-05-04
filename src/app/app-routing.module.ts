@@ -5,6 +5,7 @@ import { ReadingsComponent } from './modules/readings/readings.component';
 import { SaintsComponent } from "./modules/saints/saints.component";
 import { MassScheduleComponent} from "./modules/mass-schedule/mass-schedule.component";
 import { PrayersComponent } from "./modules/prayers/prayers.component";
+import { CalendarComponent } from "./modules/calendar/calendar.component";
 
 const appRoutes: Routes = [
   /*
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'saints', component: SaintsComponent, },
   { path: 'mass-schedule', component: MassScheduleComponent, },
   { path: 'prayers', component: PrayersComponent, },
+  { path: 'calendar', component: CalendarComponent, },
   /*
   * Redirection
   * */
@@ -34,4 +36,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ReadingsComponent, SaintsComponent, MassScheduleComponent, PrayersComponent]
+export const routingComponents = [ReadingsComponent, SaintsComponent, MassScheduleComponent, PrayersComponent, CalendarComponent]

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SqueezeComponent } from './squeeze.component';
+import { BibleComponent } from './bible.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [SqueezeComponent]
+  declarations: [BibleComponent]
 })
-export class SqueezeModule { }
+export class BibleModule { }

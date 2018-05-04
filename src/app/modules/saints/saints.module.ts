@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExplorerComponent } from './explorer.component';
+import {SaintsComponent} from "./saints.component";
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [ExplorerComponent]
+  declarations: [SaintsComponent]
 })
-export class ExplorerModule { }
+export class SaintsModule { }
