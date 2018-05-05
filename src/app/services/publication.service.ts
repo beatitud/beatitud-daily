@@ -1,58 +1,86 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppSettings } from '../app.settings';
 
-import * as config from "assets/config.json"
-const configUrl = (<any>config).WS_CONFIG
-const languageMatchVersion = (<any>config).LANGUAGE_MATCH_VERSION
+import {utc} from 'moment';
+import * as moment from 'moment';
+import {success, failure} from '../tools/OperationResult';
+
+const lgDateFormat = 'YYYY/MM/DD';
+const evzoDateFormat = 'YYYY-MM-DD';
 
 @Injectable()
-export class LanguagesService {
+export class EvzoLanguagesService {
 
-  constructor(
-    private http: HttpClient,
-  ) {
+  constructor(private readonly appSettings: AppSettings,
+              private readonly httpClient: HttpClient) {
   }
 
   getLanguages() {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + "languages", {
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/languages`;
+    return this.httpClient.get(url, {
       headers: {ignoreLoadingBar: ''}
     });
+  }
+}
+
+@Injectable()
+export class EvzoReadingsService {
+
+  constructor(private readonly appSettings: AppSettings,
+              private readonly httpClient: HttpClient) { }
+
+  getReadings(version, date) {
+    date = moment(date).format(evzoDateFormat)
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/readings`;
+    return this.httpClient.get(url);
+  }
+
+  getLiturgicEvent(version, date) {
+    date = moment(date).format(evzoDateFormat)
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/liturgy`;
+    return this.httpClient.get(url, {
+      headers: {ignoreLoadingBar: ''}
+    });
+  }
+
+  getCommentary(version, date = utc().format(evzoDateFormat)) {
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/commentary`;
+    return this.httpClient.get(url);
+  }
+
+}
+
+@Injectable()
+export class EvzoSaintsService {
+
+  constructor(private readonly appSettings: AppSettings,
+              private readonly httpClient: HttpClient) { }
+
+  getSaints(version, date = utc().format(evzoDateFormat)) {
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/saints`;
+    return this.httpClient.get(url);
+  }
+
+  getSaintDetails(saintId) {
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/saints/${saintId}`;
+    return this.httpClient.get(url);
   }
 
 }
 
 @Injectable()
 export class ReadingsService {
-
-  constructor(private http: HttpClient) { }
-
-  getReadings(version, day) {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + version + "/days/" + day + "/readings");
+  constructor(private readonly appSettings: AppSettings,
+              private readonly httpClient: HttpClient) {
   }
 
-  getLiturgicEvent(version, day) {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + version + "/days/" + day + "/liturgy", {
-      headers: {ignoreLoadingBar: ''}
-    });
+  async getReferences(date = utc().format(lgDateFormat)) {
+    const url = `${this.appSettings.getReferencesBaseUrl}/${date}/data.json`;
+    const result = await this.httpClient.get(url)
+      .toPromise()
+      .then(success)
+      .catch(failure);
+    return result;
   }
-
-  getCommentary(version, day) {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + version + "/days/" + day + "/commentary");
-  }
-
-}
-
-@Injectable()
-export class SaintsService {
-
-  constructor(private http: HttpClient) { }
-
-  getSaints(version, day) {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + version + "/days/" + day + "/saints");
-  }
-
-  getSaintDetails(saintId) {
-    return this.http.get(configUrl.WS_PUBLICATION_URL + "/saints/" + saintId);
-  }
-
 }

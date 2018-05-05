@@ -1,26 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-// import { Store } from '@ngrx/store';
-import { dateEvangelizoFormatter, getVerseNbAndTextList } from '../../tools/utils'
-import { ReadingsService, LanguagesService } from "../../services/publication.service";
-// import {Settings} from "../../_models/settings";
+import { Component, OnInit } from '@angular/core';
+import { getVerseNbAndTextList } from './utils'
+import { EvzoReadingsService, EvzoLanguagesService } from "../../services/publication.service";
 
-// import * as fromRoot from '../../_reducers';
-// import {InitSettingsAction} from "../../_actions/settings.actions";
-
-class Reading {
-
-}
 
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
   styleUrls: ['./readings.component.css'],
-  providers: [ReadingsService, LanguagesService],
+  providers: [EvzoReadingsService, EvzoLanguagesService],
 })
 export class ReadingsComponent implements OnInit {
   readings: any;
-  date: string;
+  date: object;
   liturgicEvent: any;
   getVerseNbAndTextList = getVerseNbAndTextList;
   selectedText: string;
@@ -28,20 +19,14 @@ export class ReadingsComponent implements OnInit {
   selectedVersion: any;
   selectedLanguage: any;
 
-  // Redux based variables
-  // settings: Observable<Settings>;
-
   constructor(
-    private _readings: ReadingsService,
-    private _languages: LanguagesService,
-    // private store: Store<fromRoot.settings>
+    private _readings: EvzoReadingsService,
+    private _languages: EvzoLanguagesService,
     ) {
-    // this.settings =
   }
 
   ngOnInit() {
-    // this.store.dispatch(new InitSettingsAction())
-    this.date = dateEvangelizoFormatter(new Date())
+    this.date = new Date()
     var _this = this;
 
     this._languages.getLanguages()

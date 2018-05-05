@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ReadingsComponent } from './modules/readings/readings.component';
 import { SaintsComponent } from "./modules/saints/saints.component";
-import { MassScheduleComponent} from "./modules/mass-schedule/mass-schedule.component";
+import { MassScheduleComponent} from "./modules/massSchedule/mass.schedule.component";
 import { PrayersComponent } from "./modules/prayers/prayers.component";
 import { CalendarComponent } from "./modules/calendar/calendar.component";
 

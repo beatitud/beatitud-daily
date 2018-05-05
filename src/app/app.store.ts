@@ -1,4 +1,4 @@
-import {Settings} from "./_models/settings";
+import {Settings} from "./models/settings";
 
 export interface AppStore {
   settings: Settings;

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MassScheduleComponent } from './mass-schedule.component';
+import { MassScheduleComponent } from './mass.schedule.component';
 
 describe('MassScheduleComponent', () => {
   let component: MassScheduleComponent;
