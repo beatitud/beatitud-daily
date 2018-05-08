@@ -16,11 +16,14 @@ export class EvzoLanguagesService {
               private readonly httpClient: HttpClient) {
   }
 
-  getLanguages() {
+  async getLanguages() {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/languages`;
-    return this.httpClient.get(url, {
+    return await this.httpClient.get(url, {
       headers: {ignoreLoadingBar: ''}
-    });
+    })
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 }
 
@@ -30,23 +33,32 @@ export class EvzoReadingsService {
   constructor(private readonly appSettings: AppSettings,
               private readonly httpClient: HttpClient) { }
 
-  getReadings(version, date) {
+  async getReadings(version, date) {
     date = moment(date).format(evzoDateFormat)
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/readings`;
-    return this.httpClient.get(url);
+    return await this.httpClient.get(url)
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 
-  getLiturgicEvent(version, date) {
+  async getLiturgicEvent(version, date) {
     date = moment(date).format(evzoDateFormat)
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/liturgy`;
-    return this.httpClient.get(url, {
+    return await this.httpClient.get(url, {
       headers: {ignoreLoadingBar: ''}
-    });
+    })
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 
-  getCommentary(version, date = utc().format(evzoDateFormat)) {
+  async getCommentary(version, date = utc().format(evzoDateFormat)) {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/commentary`;
-    return this.httpClient.get(url);
+    return await this.httpClient.get(url)
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 
 }
@@ -57,14 +69,20 @@ export class EvzoSaintsService {
   constructor(private readonly appSettings: AppSettings,
               private readonly httpClient: HttpClient) { }
 
-  getSaints(version, date = utc().format(evzoDateFormat)) {
+  async getSaints(version, date = utc().format(evzoDateFormat)) {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/saints`;
-    return this.httpClient.get(url);
+    return await this.httpClient.get(url)
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 
-  getSaintDetails(saintId) {
+  async getSaintDetails(saintId) {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/saints/${saintId}`;
-    return this.httpClient.get(url);
+    return await this.httpClient.get(url)
+      .toPromise()
+      .then(success)
+      .catch(failure);
   }
 
 }
@@ -77,10 +95,11 @@ export class ReadingsService {
 
   async getReferences(date = utc().format(lgDateFormat)) {
     const url = `${this.appSettings.getReferencesBaseUrl}/${date}/data.json`;
-    const result = await this.httpClient.get(url)
+    return await this.httpClient.get(url, {
+      headers: {ignoreLoadingBar: ''}
+    })
       .toPromise()
       .then(success)
       .catch(failure);
-    return result;
   }
 }

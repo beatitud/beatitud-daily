@@ -7,7 +7,12 @@ import {
   MatIconModule,
   MatCardModule,
   MatSidenavModule,
-  MatProgressBarModule, MatSelectModule,
+  MatProgressBarModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatFormFieldModule,
 } from '@angular/material';
 
 @NgModule({
@@ -20,6 +25,10 @@ import {
     MatSidenavModule,
     MatProgressBarModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatButtonModule,
@@ -30,6 +39,10 @@ import {
     MatSidenavModule,
     MatProgressBarModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
   ]
 })
 export class MaterialModule {}

@@ -19,7 +19,7 @@ import { AppSettings } from "./app.settings";
 
 // Import main app components
 import { AppComponent } from './app.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { SideNavComponent } from './components/sideNav/side.nav.component';
 
 // Import all services
 import { EvzoLanguagesService, EvzoReadingsService, EvzoSaintsService } from "./services/publication.service";

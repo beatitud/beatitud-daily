@@ -1,16 +1,28 @@
 
-.readings-page-content {
-  margin-top: 50px;
-  margin-right: 20vh;
-  margin-left: 20vh;
+.readings-page {
+  overflow: hidden;
+  height: 100%;
+}
+
+.readings-component {
+  overflow-y: scroll;
 }
 
 .settings-pickers {
 }
 
-.version-picker, .language-picker {
+.date-picker, .version-picker, .language-picker {
   margin-left: 10px;
 }
+
+/*.date-picker input {*/
+  /*color: #2f363e;*/
+  /*width: 80%;*/
+  /*height: 200px;*/
+  /*font-size: 5em;*/
+  /*word-wrap: break-word;*/
+  /*font-weight: bold;*/
+/*}*/
 
 .readings-component .date {
   margin-top: 30px;

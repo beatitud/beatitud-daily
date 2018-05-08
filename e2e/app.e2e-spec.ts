@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('living-frontend App', () => {
+describe('dataa.cath App', () => {
   let page: AppPage;
 
   beforeEach(() => {

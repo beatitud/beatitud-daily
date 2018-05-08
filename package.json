@@ -1,18 +1,14 @@
 {
-  "name": "living-frontend",
+  "name": "data.cath",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "run-p pug-it:w server",
-    "server": "ng serve --port 4210",
-    "prebuild": "yarn run pug-it",
-    "build": "ng build",
+    "start": "ng serve",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "pug-it": "pug src",
-    "pug-it:w": "pug src -P -w"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -49,9 +45,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "npm-run-all": "^4.1.2",
     "protractor": "~5.1.2",
-    "pug-cli": "^1.0.0-alpha6",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"

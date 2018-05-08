@@ -1,18 +1,6 @@
-# LivingFrontend
+# Data.cath
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
-
-## Get started
-
-```
-npm install
-npm start
-```
-
-## Dependencies
-
-- PUG (Jade), automatically compiled into html (see how it works with angular cli [here](https://hackernoon.com/using-pug-jade-with-angular-with-cli-5592b7ee24e6))
-
 
 ## Development server
 
