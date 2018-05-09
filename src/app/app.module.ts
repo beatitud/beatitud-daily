@@ -23,6 +23,7 @@ import { SideNavComponent } from './components/sideNav/side.nav.component';
 
 // Import all services
 import { EvzoLanguagesService, EvzoReadingsService, EvzoSaintsService } from "./services/publication.service";
+import { TopBarComponent } from './components/topBar/top.bar.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { EvzoLanguagesService, EvzoReadingsService, EvzoSaintsService } from "./
   declarations: [
     AppComponent,
     routingComponents,
-    SideNavComponent
+    SideNavComponent,
+    TopBarComponent
   ],
   providers: [
     AppSettings,

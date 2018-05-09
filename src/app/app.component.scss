@@ -1,0 +1,25 @@
+@import '~sass/styles';
+
+.container {
+  overflow: hidden;
+  background: white;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+app-top-bar {
+  background: $blue-grey;
+}
+
+app-side-nav {
+  background: white;
+  border-right: $blue-grey-100 solid 1px;
+}
+
+.mat-toolbar {
+  background: #f5f5f5;
+  color: rgba(0,0,0,.87);
+}

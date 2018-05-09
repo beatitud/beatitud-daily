@@ -1,13 +1,14 @@
-<div>
-  <ngx-loading-bar color="#449bff" [includeSpinner]="false" height="3px"></ngx-loading-bar>
-  <mat-sidenav-container class="container" *ngIf="shouldRun">
-    <mat-sidenav mode="side" class="sidenav" opened>
-      <app-side-nav [routerLinkActive]></app-side-nav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<div style="overflow: hidden; height: 100%;">
+  <ngx-loading-bar color="#2196f3" [includeSpinner]="false" height="3px"></ngx-loading-bar>
+  <div class="container" fxLayout="column" style="overflow: hidden;">
+    <app-top-bar style="height: 60px;"></app-top-bar>
+    <div fxLayout="row" fxFlex="grow">
+      <app-side-nav [routerLinkActive] fxLayout="column" style="width: 350px;" fxLayoutAlign="center center"></app-side-nav>
+      <div fxLayout="column" fxFlex="grow" style="overflow-y: scroll;">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
 
 

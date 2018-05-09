@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-mass-schedule',
   templateUrl: './mass.schedule.component.html',
-  styleUrls: ['./mass.schedule.component.css']
+  styleUrls: ['./mass.schedule.component.scss']
 })
 export class MassScheduleComponent implements OnInit {
 

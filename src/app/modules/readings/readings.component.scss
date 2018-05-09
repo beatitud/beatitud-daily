@@ -1,14 +1,14 @@
+@import '~sass/variables';
 
-.readings-page {
-  overflow: hidden;
-  height: 100%;
+.readings {
+
 }
 
 .readings-component {
-  overflow-y: scroll;
 }
 
 .settings-pickers {
+
 }
 
 .date-picker, .version-picker, .language-picker {
@@ -31,7 +31,7 @@
 
 .readings-component .liturgic-title {
   /*font-size: 2.2em;*/
-  color: #495768;
+  color: $primary;
 }
 
 .readings-component .reading-block {

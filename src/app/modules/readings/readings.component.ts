@@ -5,7 +5,7 @@ import {EvzoReadingsService, EvzoLanguagesService, ReadingsService} from "../../
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
-  styleUrls: ['./readings.component.css'],
+  styleUrls: ['./readings.component.scss'],
   providers: [EvzoReadingsService, EvzoLanguagesService, ReadingsService],
 })
 export class ReadingsComponent implements OnInit {

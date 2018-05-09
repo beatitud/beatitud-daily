@@ -1,10 +1,7 @@
+@import "~sass/styles.scss";
+
 .main-side-nav {
   font-size: 1.1em;
-  padding: 0px;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
 }
 
 .main-side-nav .logo {
@@ -33,14 +30,14 @@
 }
 
 .main-side-nav .nav-item-active {
-  font-weight: bold;
-  /*color: #4cd5a0;*/
-  /*color: #5499e7;*/
-  color: #2f363e;
+  span {
+    font-weight: 600;
+  }
+  color: $blue-grey;
 }
 
 .main-side-nav .nav-item-inactive {
-  color: #979fa6;
+  color: $blue-grey-400;
 }
 
 
