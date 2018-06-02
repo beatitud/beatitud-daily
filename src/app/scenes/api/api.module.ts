@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BibleComponent } from './bible.component';
+import {ApiComponent} from "./api.component";
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [BibleComponent]
+  declarations: [ApiComponent]
 })
-export class BibleModule { }
+export class ApiModule { }

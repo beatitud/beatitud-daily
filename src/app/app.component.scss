@@ -2,21 +2,19 @@
 
 .container {
   overflow: hidden;
-  background: white;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: auto;
 }
 
 app-top-bar {
+  height: 64px;
+  width: 100%;
   background: $blue-grey;
+  overflow: hidden;
 }
 
-app-side-nav {
-  background: white;
-  border-right: $blue-grey-100 solid 1px;
+.sub-container {
+  overflow: hidden;
 }
 
 .mat-toolbar {

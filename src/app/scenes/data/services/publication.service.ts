@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppSettings } from '../app.settings';
+import { AppSettings } from '../../../app.settings';
 
 import {utc} from 'moment';
 import * as moment from 'moment';
-import {success, failure} from '../tools/OperationResult';
+import {success, failure} from '../../../tools/OperationResult';
 
 const lgDateFormat = 'YYYY/MM/DD';
 const evzoDateFormat = 'YYYY-MM-DD';

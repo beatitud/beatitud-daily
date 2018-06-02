@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ReadingsComponent } from './modules/readings/readings.component';
-import { SaintsComponent } from "./modules/saints/saints.component";
-import { MassScheduleComponent} from "./modules/massSchedule/mass.schedule.component";
-import { PrayersComponent } from "./modules/prayers/prayers.component";
-import { CalendarComponent } from "./modules/calendar/calendar.component";
+import { HomeComponent } from "./scenes/home/home.component";
+import { ApiComponent } from "./scenes/api/api.component";
+import { PageNotFoundComponent } from "./components/pageNotFound/page.not.found.component";
+import { DataComponent } from "./scenes/data/data.component";
+import { dataRoutes, dataRoutingComponents } from "./scenes/data/data.routing";
 
 const appRoutes: Routes = [
   /*
   * Paths
   * */
-  { path: 'readings', component: ReadingsComponent, },
-  { path: 'saints', component: SaintsComponent, },
-  { path: 'mass-schedule', component: MassScheduleComponent, },
-  { path: 'prayers', component: PrayersComponent, },
-  { path: 'calendar', component: CalendarComponent, },
+  { path: 'home', component: HomeComponent, },
+  { path: 'api', component: ApiComponent, },
+  {
+    path: 'data',
+    component: DataComponent,
+    children: [...dataRoutes]
+  },
+  { path: "**", component: PageNotFoundComponent,
+  }
   /*
   * Redirection
   * */
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  // { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -36,4 +40,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ReadingsComponent, SaintsComponent, MassScheduleComponent, PrayersComponent, CalendarComponent]
+export const routingComponents = [ApiComponent, HomeComponent, PageNotFoundComponent, DataComponent, ...dataRoutingComponents]

@@ -1,14 +1,10 @@
-<div style="overflow: hidden; height: 100%;">
+<div style="overflow: hidden;">
   <ngx-loading-bar color="#2196f3" [includeSpinner]="false" height="3px"></ngx-loading-bar>
-  <div class="container" fxLayout="column" style="overflow: hidden;">
-    <app-top-bar style="height: 60px;"></app-top-bar>
-    <div fxLayout="row" fxFlex="grow">
-      <app-side-nav [routerLinkActive] fxLayout="column" style="width: 350px;" fxLayoutAlign="center center"></app-side-nav>
-      <div fxLayout="column" fxFlex="grow" style="overflow-y: scroll;">
-        <router-outlet></router-outlet>
-      </div>
+  <div class="container" fxLayout="column">
+    <app-top-bar></app-top-bar>
+    <div class="sub-container">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
 

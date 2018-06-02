@@ -1,0 +1,62 @@
+@import '~sass/variables';
+
+.logo {
+  color: white;
+  font-weight: bold;
+}
+
+$underline-color: $blue-grey-dark;
+$duration: .2s;
+$distance: 10px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+.top-bar a {
+  font-size: 0.9em;
+  span {font-weight: 700;}
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  margin: 0px 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 8px;
+
+  &:hover, &.nav-item-active {
+    color: $underline-color;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $underline-color;
+  }
+  &:before {
+    opacity: 0;
+    transform: translateY(- $distance);
+    transition: transform 0s $easeOutBack, opacity 0s;
+  }
+  &:after {
+    opacity: 0;
+    transform: translateY($distance/2);
+    transition: transform $duration $easeOutBack, opacity $duration;
+  }
+  &:hover,
+  &:focus, &.nav-item-active {
+    &:before,
+    &:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &:before {
+      transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:after {
+      transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+    }
+  }
+}
