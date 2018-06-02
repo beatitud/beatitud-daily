@@ -19,7 +19,6 @@ import { AppSettings } from "./app.settings";
 // Import main app components
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components/topBar/top.bar.component';
-import { SideNavComponent } from "./scenes/data/components/sideNav/side.nav.component";
 
 @NgModule({
   imports: [
@@ -37,7 +36,6 @@ import { SideNavComponent } from "./scenes/data/components/sideNav/side.nav.comp
     AppComponent,
     TopBarComponent,
     ...routingComponents,
-    SideNavComponent,
   ],
   providers: [
     AppSettings,

@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// Import scenes components
 import { ReadingsComponent } from "./scenes/readings/readings.component"
 import { SaintsComponent } from "./scenes/saints/saints.component";
 import { MassScheduleComponent } from "./scenes/massSchedule/mass.schedule.component";
 import { PrayersComponent } from "./scenes/prayers/prayers.component";
 import { CalendarComponent } from "./scenes/calendar/calendar.component";
+
+// Import all the other components here
+import { SideNavComponent } from "./components/sideNav/side.nav.component";
+import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 
 export const dataRoutes: Routes = [
   /*
@@ -36,4 +41,12 @@ export const dataRoutes: Routes = [
 
 export class DataRoutingModule { }
 
-export const dataRoutingComponents = [ReadingsComponent, SaintsComponent, MassScheduleComponent, PrayersComponent, CalendarComponent,]
+export const dataComponents = [
+  ReadingsComponent,
+  SaintsComponent,
+  MassScheduleComponent,
+  PrayersComponent,
+  CalendarComponent,
+  SideNavComponent,
+  ToolbarComponent,
+]

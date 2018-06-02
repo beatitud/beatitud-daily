@@ -5,7 +5,7 @@ import { HomeComponent } from "./scenes/home/home.component";
 import { ApiComponent } from "./scenes/api/api.component";
 import { PageNotFoundComponent } from "./components/pageNotFound/page.not.found.component";
 import { DataComponent } from "./scenes/data/data.component";
-import { dataRoutes, dataRoutingComponents } from "./scenes/data/data.routing";
+import { dataRoutes, dataComponents } from "./scenes/data/data.routing";
 
 const appRoutes: Routes = [
   /*
@@ -40,4 +40,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ApiComponent, HomeComponent, PageNotFoundComponent, DataComponent, ...dataRoutingComponents]
+export const routingComponents = [ApiComponent, HomeComponent, PageNotFoundComponent, DataComponent, ...dataComponents]

@@ -38,13 +38,18 @@ export class TopBarComponent implements OnInit {
       linkTo: "/projects",
       label: "projects"
     },
-    {
-      iconClass: "material-icons",
-      iconElement: "account_circle",
-      linkTo: "/account",
-      label: "account"
-    },
+    // {
+    //   iconClass: "material-icons",
+    //   iconElement: "account_circle",
+    //   linkTo: "/account",
+    //   label: "account"
+    // },
   ];
+
+  account: object = {
+    linkTo: "/account",
+    label: "Antoine",
+  }
 
   constructor() { }
 

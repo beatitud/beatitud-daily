@@ -13,36 +13,28 @@ import {
   MatNativeDateModule,
   MatInputModule,
   MatFormFieldModule,
+  MatDividerModule,
 } from '@angular/material';
 
+
+const materialModules = [
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatProgressBarModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatDividerModule,
+]
+
 @NgModule({
-  imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatFormFieldModule,
-  ],
-  exports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatFormFieldModule,
-  ]
+  imports: materialModules,
+  exports: materialModules
 })
 export class MaterialModule {}
