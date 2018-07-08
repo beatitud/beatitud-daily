@@ -1,9 +1,13 @@
-<div style="overflow: hidden;">
+<div>
   <ngx-loading-bar color="#2196f3" [includeSpinner]="false" height="3px"></ngx-loading-bar>
   <div class="container" fxLayout="column">
-    <app-top-bar></app-top-bar>
     <div class="sub-container">
-      <router-outlet></router-outlet>
+      <div fxLayout="row">
+        <app-side-nav [routerLinkActive] fxLayout="column" fxLayoutAlign="center center"></app-side-nav>
+        <div class="data-container" fxLayout="column" fxFlex="grow">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent {
 
-  prefix: string = '/data';
+  prefix: string = '';
 
   navItems: object = [
     {
@@ -38,7 +38,7 @@ export class SideNavComponent {
       iconClass: "fas fa-calendar-alt",
       iconElement: "",
       linkTo: this.prefix + "/calendar",
-      label: "Liturgical Calendar"
+      label: "Calendar"
     },
   ];
 

@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from "./scenes/home/home.component";
-import { ApiComponent } from "./scenes/api/api.component";
-import { PageNotFoundComponent } from "./components/pageNotFound/page.not.found.component";
-import { DataComponent } from "./scenes/data/data.component";
-import { dataRoutes, dataComponents } from "./scenes/data/data.routing";
+import { PageNotFoundComponent } from "./shared/pageNotFound/page.not.found.component";
 
-const appRoutes: Routes = [
+// Import scenes components
+import {ReadingsComponent} from "./views/readings/readings.component"
+import {SaintsComponent} from "./views/saints/saints.component";
+import {MassScheduleComponent} from "./views/massSchedule/mass.schedule.component";
+import {PrayersComponent} from "./views/prayers/prayers.component";
+import {CalendarComponent} from "./views/calendar/calendar.component";
+
+// Import all the other components here
+import {SideNavComponent} from "./shared/sideNav/side.nav.component";
+import {ToolbarComponent} from "./shared/toolbar/toolbar.component";
+import {SaintProfileComponent} from "./views/saintProfile/saint.profile.component";
+
+export const appRoutes: Routes = [
   /*
   * Paths
   * */
-  { path: 'home', component: HomeComponent, },
-  { path: 'api', component: ApiComponent, },
-  {
-    path: 'data',
-    component: DataComponent,
-    children: [...dataRoutes]
-  },
-  { path: "**", component: PageNotFoundComponent,
-  }
+  {path: 'readings', component: ReadingsComponent,},
+  {path: 'saints', component: SaintsComponent,},
+  {path: 'saint', component: SaintProfileComponent,},
+  {path: 'mass-schedule', component: MassScheduleComponent,},
+  {path: 'prayers', component: PrayersComponent,},
+  {path: 'calendar', component: CalendarComponent,},
+  {path: "**", component: PageNotFoundComponent,},
   /*
   * Redirection
   * */
@@ -40,4 +46,14 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [ApiComponent, HomeComponent, PageNotFoundComponent, DataComponent, ...dataComponents]
+export const routingComponents = [
+  ReadingsComponent,
+  SaintsComponent,
+  MassScheduleComponent,
+  PrayersComponent,
+  CalendarComponent,
+  SideNavComponent,
+  ToolbarComponent,
+  SaintProfileComponent,
+  PageNotFoundComponent,
+]

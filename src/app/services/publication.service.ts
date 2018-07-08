@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AppSettings } from '../../../app.settings';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {AppSettings} from '../app.settings';
 
 import {utc} from 'moment';
 import * as moment from 'moment';
-import {success, failure} from '../../../tools/OperationResult';
+import {success, failure} from '../tools/OperationResult';
 
 const lgDateFormat = 'YYYY/MM/DD';
 const evzoDateFormat = 'YYYY-MM-DD';
@@ -16,14 +16,11 @@ export class EvzoLanguagesService {
               private readonly httpClient: HttpClient) {
   }
 
-  async getLanguages() {
+  getLanguages() {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/languages`;
-    return await this.httpClient.get(url, {
+    return this.httpClient.get(url, {
       headers: {ignoreLoadingBar: ''}
-    })
-      .toPromise()
-      .then(success)
-      .catch(failure);
+    });
   }
 }
 
@@ -31,34 +28,26 @@ export class EvzoLanguagesService {
 export class EvzoReadingsService {
 
   constructor(private readonly appSettings: AppSettings,
-              private readonly httpClient: HttpClient) { }
+              private readonly httpClient: HttpClient) {
+  }
 
-  async getReadings(version, date) {
+  getReadings(version, date) {
     date = moment(date).format(evzoDateFormat)
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/readings`;
-    return await this.httpClient.get(url)
-      .toPromise()
-      .then(success)
-      .catch(failure);
+    return this.httpClient.get(url);
   }
 
-  async getLiturgicEvent(version, date) {
+  getLiturgicEvent(version, date) {
     date = moment(date).format(evzoDateFormat)
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/liturgy`;
-    return await this.httpClient.get(url, {
+    return this.httpClient.get(url, {
       headers: {ignoreLoadingBar: ''}
-    })
-      .toPromise()
-      .then(success)
-      .catch(failure);
+    });
   }
 
-  async getCommentary(version, date = utc().format(evzoDateFormat)) {
+  getCommentary(version, date = utc().format(evzoDateFormat)) {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/commentary`;
-    return await this.httpClient.get(url)
-      .toPromise()
-      .then(success)
-      .catch(failure);
+    return this.httpClient.get(url);
   }
 
 }
@@ -67,22 +56,17 @@ export class EvzoReadingsService {
 export class EvzoSaintsService {
 
   constructor(private readonly appSettings: AppSettings,
-              private readonly httpClient: HttpClient) { }
-
-  async getSaints(version, date = utc().format(evzoDateFormat)) {
-    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/saints`;
-    return await this.httpClient.get(url)
-      .toPromise()
-      .then(success)
-      .catch(failure);
+              private readonly httpClient: HttpClient) {
   }
 
-  async getSaintDetails(saintId) {
+  getSaints(version, date = utc().format(evzoDateFormat)) {
+    const url = `${this.appSettings.getEvzoPublicationBaseUrl}/${version}/days/${date}/saints`;
+    return this.httpClient.get(url);
+  }
+
+  getSaintDetails(saintId) {
     const url = `${this.appSettings.getEvzoPublicationBaseUrl}/saints/${saintId}`;
-    return await this.httpClient.get(url)
-      .toPromise()
-      .then(success)
-      .catch(failure);
+    return this.httpClient.get(url);
   }
 
 }
@@ -95,11 +79,10 @@ export class ReadingsService {
 
   async getReferences(date = utc().format(lgDateFormat)) {
     const url = `${this.appSettings.getReferencesBaseUrl}/${date}/data.json`;
-    return await this.httpClient.get(url, {
-      headers: {ignoreLoadingBar: ''}
-    })
+    const result = await this.httpClient.get(url)
       .toPromise()
       .then(success)
       .catch(failure);
+    return result;
   }
 }

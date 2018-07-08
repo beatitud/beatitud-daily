@@ -1,5 +1,15 @@
 @import "~sass/styles.scss";
 
+.logo {
+  span {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: -0.03em;
+    margin-left: 20px;
+    margin-top: -10px;
+  }
+}
 .main-side-nav {
   font-size: 1.1em;
 }

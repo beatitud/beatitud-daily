@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { getVerseNbAndTextList } from './utils'
-import {EvzoReadingsService, EvzoLanguagesService, ReadingsService} from "../../services/publication.service";
+import { EvzoReadingsService, EvzoLanguagesService, ReadingsService } from "../../services/publication.service";
+import { SettingsService } from "../../services/settings.service";
 
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
   styleUrls: ['./readings.component.scss'],
-  providers: [EvzoReadingsService, EvzoLanguagesService, ReadingsService],
+  providers: [EvzoReadingsService, EvzoLanguagesService, ReadingsService, SettingsService],
 })
 export class ReadingsComponent implements OnInit {
   readings: any;
@@ -17,13 +18,9 @@ export class ReadingsComponent implements OnInit {
   languages: any;
   selectedVersion: any;
   selectedLanguage: any;
-  selectedCountry: any;
 
-  constructor(
-    private _readings: EvzoReadingsService,
-    private _languages: EvzoLanguagesService,
-    private _lgReferences: ReadingsService,
-    ) {
+  constructor(private _readings: EvzoReadingsService,
+              private _languages: EvzoLanguagesService,) {
   }
 
   ngOnInit() {
@@ -31,17 +28,11 @@ export class ReadingsComponent implements OnInit {
     var _this = this;
 
     this._languages.getLanguages()
-      .then(function(res){
-        if (res.type ==='success') {
-          _this.languages = res.value.data;
-          _this.selectedLanguage = _this.languages[0];
-          _this.onChangeLanguage(_this.selectedLanguage);
-        } else {
-          console.log(res["reason"].error.error.message)
-        }
+      .subscribe(function (json) {
+        _this.languages = json["data"];
+        _this.selectedLanguage = _this.languages[0];
+        _this.onChangeLanguage(_this.selectedLanguage);
       })
-
-    this._lgReferences.getReferences().then(console.log);
   }
 
   onChangeLanguage(language): void {
@@ -53,21 +44,13 @@ export class ReadingsComponent implements OnInit {
   loadContent(version, date): void {
     var _this = this;
     this._readings.getReadings(version, date)
-      .then(function(res){
-        if (res.type === 'success') {
-          _this.readings = res.value.data;
-        } else {
-          console.log(res["reason"].error.error.message)
-        }
+      .subscribe(function (json) {
+        _this.readings = json["data"];
       });
 
     this._readings.getLiturgicEvent(version, date)
-      .then(function(res){
-        if (res.type === 'success') {
-          _this.liturgicEvent = res.value.data;
-        } else {
-          console.log(res["reason"].error.error.message)
-        }
+      .subscribe(function (json) {
+        _this.liturgicEvent = json["data"];
       })
   }
 
@@ -80,6 +63,5 @@ export class ReadingsComponent implements OnInit {
     // }
     console.log(this.selectedText);
   };
-
 
 }

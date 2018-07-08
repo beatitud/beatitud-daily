@@ -1,48 +1,90 @@
-import { Component, OnInit } from '@angular/core';
-import { EvzoLanguagesService } from "../../services/publication.service";
+import { Injectable } from '@angular/core';
+import { EvzoLanguagesService } from "./publication.service";
 
-@Component({
-  selector: 'data-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss'],
-  providers: [EvzoLanguagesService, ],
-})
-export class ToolbarComponent implements OnInit {
-  selectedDate: object;
-  languages: any;
-  selectedVersion: any;
-  selectedLanguage: any;
-  countries: any = countries;
-  selectedCountry: any = countries[0];
+import {utc} from 'moment';
+import * as moment from 'moment';
+
+
+@Injectable()
+export class SettingsService {
+  private userLanguage;
+  private languages;
+  private userCountry;
+  private countries;
+  private userCalendar;
+  private calendars;
 
   constructor(
-    private _languages: EvzoLanguagesService,
-  ) { }
-
-  ngOnInit() {
-    this.selectedDate = new Date()
+    private _evzoLanguages: EvzoLanguagesService,
+  ) {
     var _this = this;
 
-    this._languages.getLanguages()
-      .then(function (res) {
-        if (res.type === 'success') {
-          _this.languages = res.value.data;
-          _this.selectedLanguage = _this.languages[0];
-          _this.onChangeLanguage(_this.selectedLanguage);
-        } else {
-          console.log(res["reason"].error.error.message)
-        }
-      })
+    // Get available countries
+    this.countries = countries;
 
   }
 
-  onChangeLanguage(language): void {
-    this.selectedLanguage = language
-    this.selectedVersion = language.versions[0];
-    // this.loadContent(this.selectedVersion.code, this.date)
+  getBrowserSettings() {
+    var lang = window.navigator.language // || window.navigator.userLanguage;
+    var browserLanguage = lang.substring(0,2).toUpperCase()
+    var browserCountry = lang.substring(3,5)
+    return [browserLanguage, browserCountry]
   }
 
+  setLanguage(languageCode) {
+    this.userLanguage = this.languages.filter(function (e) {
+      return e.code === languageCode
+    })[0];
+    // Set available calendars
+    this.calendars = this.userLanguage.versions
+    this.setCalendar(this.calendars[0])
+  }
 
+  setCountry(countryCode) {
+    this.userCountry = this.countries.filter(function(e){
+      return e.code === countryCode
+    })[0];
+  }
+
+  setCalendar(val) {
+    this.userCalendar = val;
+  }
+
+  getLanguage() {
+    return this.userLanguage;
+  }
+
+  getLanguages() {
+    if (!this.languages) {
+      console.log('hey')
+      var _this = this
+      // Get available languages on Evangelizo
+      this._evzoLanguages.getLanguages()
+        .subscribe(function (data) {
+          _this.languages = data;
+
+          // Set user language
+          if (!_this.userLanguage) {
+            var [languageCode, countryCode] = _this.getBrowserSettings()
+            _this.setLanguage(languageCode)
+            _this.setCountry(countryCode)
+          }
+        })
+    }
+    return this.languages;
+  }
+
+  getCountry() {
+    return this.userCountry;
+  }
+
+  getCountries() {
+    return this.countries;
+  }
+
+  getCalendar() {
+    return this.userCalendar;
+  }
 }
 
 var countries = [
